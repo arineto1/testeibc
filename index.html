@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h1>Pergunta 1</h1>
+    <input type="radio" name="pergunta1" class="pergunta" value="aguia">aguia <br>
+    <input type="radio" name="pergunta1" class="pergunta" value="tubarão">tubarão <br>
+    <input type="radio" name="pergunta1" class="pergunta" value="lobo">lobo <br>
+    <input type="radio" name="pergunta1" class="pergunta" value="gato">gato <br>
+    <hr>
+    
+    <h1>Pergunta 2</h1>
+    <input type="radio" name="pergunta2" class="pergunta" value="aguia">aguia <br>
+    <input type="radio" name="pergunta2" class="pergunta" value="tubarão">tubarão <br>
+    <input type="radio" name="pergunta2" class="pergunta" value="lobo">lobo <br>
+    <input type="radio" name="pergunta2" class="pergunta" value="gato">gato <br>
+    <hr>
+    
+    <h1>Pergunta 3</h1>
+    <input type="radio" name="pergunta3" class="pergunta" value="aguia">aguia <br>
+    <input type="radio" name="pergunta3" class="pergunta" value="tubarão">tubarão <br>
+    <input type="radio" name="pergunta3" class="pergunta" value="lobo">lobo <br>
+    <input type="radio" name="pergunta3" class="pergunta" value="gato">gato <br>
+    <hr>
+    
+    <h1>Pergunta 4</h1>
+    <input type="radio" name="pergunta4" class="pergunta" value="aguia">aguia <br>
+    <input type="radio" name="pergunta4" class="pergunta" value="tubarão">tubarão <br>
+    <input type="radio" name="pergunta4" class="pergunta" value="lobo">lobo <br>
+    <input type="radio" name="pergunta4" class="pergunta" value="gato">gato <br>
+    <hr>
+
+    <h1>Resultado</h1>
+    <input type="button" id="btn" value="RESULTADO" > 
+    <!--Mostrando os resultados em porcentagem, e encapsulando em links
+    que levam para as páginas de resultados Águia, Lobo, Tubarão ou gato-->
+    <h1>Seu perfil IBC é:</h1>      
+    <a href="aguia.html" target="_blank"><h1 id="aguia"></h1></a>
+    <a href="lobo.html" target="_blank"><h1 id="lobo"></h1></a>
+    <a href="tubarao.html" target="_blank"><h1 id="tubarao"></h1></a>
+    <a href="gato.html" target="_blank"><h1 id="gato"></h1></a>
+   
+   
+    <script>
+        //iniciando a função ao clicar no botão Enviar
+        document.getElementById("btn").onclick = function() {
+        var contAguia=0;
+        var contTubarao=0;
+        var contLobo=0;
+        var  contGato=0;
+
+        //obtendo todos os radios e atribuindo a variável radios
+        var radios = document.getElementsByClassName("pergunta");
+        //percorrendo todas as posições da variável radios
+        for(var i=0; i<radios.length; i++){
+            //testando os radios para ver se está selecionado
+            if(radios[i].checked) {
+                //testando qual o valor dos radios selecionados
+                //contando os radios selecionados de cada animal
+                if(radios[i].value === "aguia"){
+                    contAguia++;
+                } else if(radios[i].value === "tubarão"){
+                    contTubarao++;
+                } else if(radios[i].value === "lobo"){
+                    contLobo++;
+                } else{
+                    contGato++;
+                }}
+            }
+           
+        //Mostrando os resultados em porcentagem na propria página        
+        document.getElementById("aguia").innerHTML = `Águia = ${contAguia*25} %`;
+        document.getElementById("tubarao").innerHTML = `Tubarão = ${contTubarao*25} %`;
+        document.getElementById("lobo").innerHTML = `Lobo = ${contLobo*25} %`;
+        document.getElementById("gato").innerHTML = `Gato = ${contGato*25} %`;
+        
+        //salvando as porcentagens em um "banco" provisório para recuperar em outra página
+        //localStorage que permite que você salve na sessão do navegador algumas informações
+        // e com isso você pode acessar na outra página.
+        localStorage.setItem('porcAguia', `Águia = ${contAguia*25} %`) ;    
+        localStorage.setItem('porcTubarao', `Tubarão = ${contTubarao*25} %`) ; 
+        localStorage.setItem('porcLobo', `Lobo = ${contLobo*25} %`) ; 
+        localStorage.setItem('porcGato', `Gato = ${contGato*25} %`) ; 
+           
+      };
+    
+    </script>
+   
+    
+</body>
+</html>
